@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/views/s/search_view.dart';
 import 'package:weather_app/widget/no_weather_body.dart';
 import 'package:weather_app/widget/weather_info_body.dart';
 
@@ -13,7 +14,20 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const SearchView();
+                      },
+                    ),
+                  );
+                },
+              );
+            },
             icon: const Icon(Icons.search),
           ),
         ],
