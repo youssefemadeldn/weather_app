@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/views/s/search_view.dart';
 import 'package:weather_app/widget/no_weather_body.dart';
-import 'package:weather_app/widget/weather_info_body.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -11,7 +10,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather App'),
-        backgroundColor: Colors.blueAccent,
+        // backgroundColor: Colors.blueAccent,
         actions: [
           IconButton(
             onPressed: () {
