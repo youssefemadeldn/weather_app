@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:weather_app/models/weather_model.dart';
@@ -14,8 +15,13 @@ class WeatherService {
           .get('$urlBase/forecast.json?key=$apiKey&q=$cityName&days=1');
       WeatherModel weatherModel = WeatherModel.fromJson(response.data);
       return weatherModel;
-    } on Exception catch (e) {
-      return null;
+    } on DioException catch (e) {
+      final String errMessage = e.response?.data['error']['message'] ??
+          'oops there was an error , try again later';
+      throw Exception(errMessage);
+    } catch (e) {
+      log(e.toString());
+      throw const ExactAssetImage('oops there was an error , try again later');
     }
   }
 }
