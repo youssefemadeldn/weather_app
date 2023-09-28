@@ -34,3 +34,14 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+
+
+/* steps:
+  - create state
+  - create cubit
+  - create function 
+  - provide cubit
+  - integrate cubit
+  - trigger cubit
+*/
