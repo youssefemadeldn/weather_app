@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({
@@ -7,51 +9,53 @@ class WeatherInfoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Alexandria',
-            style: TextStyle(
+            weatherModel.cityName,
+            style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            'updated at: 23:24',
-            style: TextStyle(
+            weatherModel.date,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           Row(
             children: [
-              SizedBox(width: 60),
-              Image(image: AssetImage('assets/images/cloudy.png')),
-              SizedBox(width: 60),
+              const SizedBox(width: 45),
+              Image(image: NetworkImage('https:${weatherModel.image!}')),
+              const SizedBox(width: 60),
               Text(
-                '17',
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                weatherModel.temp.toString(),
+                style:
+                    const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
-              SizedBox(width: 60),
+              const SizedBox(width: 60),
               Column(
                 children: [
-                  Text('maxTemp: 17'),
-                  Text('minTemp: 17'),
+                  Text('maxTemp: ${weatherModel.maxTemp.round()}'),
+                  Text('minTemp: ${weatherModel.minTemp.round()}'),
                 ],
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           Text(
-            'Light Rain',
-            style: TextStyle(
+            weatherModel.weatherCondition,
+            style: const TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.bold,
             ),
