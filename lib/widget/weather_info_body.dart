@@ -22,7 +22,7 @@ class WeatherInfoBody extends StatelessWidget {
             ),
           ),
           Text(
-            weatherModel.date,
+            'Updated at ${weatherModel.date.hour}:${weatherModel.date.minute}',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
