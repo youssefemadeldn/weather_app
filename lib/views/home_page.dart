@@ -31,9 +31,9 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder(
+      body: BlocBuilder<GetWeatherCubit, WeatherState>(
         // this line didt't written by tharwat samy
-        bloc: context.read<GetWeatherCubit>(),
+        // bloc: context.read<GetWeatherCubit>(),
         builder: (context, state) {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
