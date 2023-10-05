@@ -33,7 +33,7 @@ class CustomMaterialApp extends StatelessWidget {
         primarySwatch: getThemeColor(
           BlocProvider.of<GetWeatherCubit>(context)
               .weatherModel
-              .weatherCondition,
+              ?.weatherCondition,
         ),
       ),
       debugShowCheckedModeBanner: false,
@@ -42,7 +42,10 @@ class CustomMaterialApp extends StatelessWidget {
   }
 }
 
-MaterialColor getThemeColor(String weather) {
+MaterialColor getThemeColor(String? weather) {
+  if (weather == null) {
+    return Colors.blue;
+  }
   switch (weather) {
     case "Sunny":
       return Colors.orange;
