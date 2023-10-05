@@ -38,7 +38,9 @@ class MyHomePage extends StatelessWidget {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
           } else if (state is WeatherLodedState) {
-            return const WeatherInfoBody();
+            return WeatherInfoBody(
+              weather: state.weatherModel,
+            );
           } else {
             return const Text(
                 'Ooops there an was error , pleas try again later');
