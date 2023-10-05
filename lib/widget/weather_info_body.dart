@@ -55,15 +55,27 @@ class WeatherInfoBody extends StatelessWidget {
                 Image(image: NetworkImage('https:${weatherModel.image!}')),
                 const SizedBox(width: 60),
                 Text(
-                  weatherModel.temp.toString(),
+                  '${weatherModel.temp.round().toString()}°',
                   style: const TextStyle(
                       fontSize: 35, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 60),
                 Column(
                   children: [
-                    Text('maxTemp: ${weatherModel.maxTemp.round()}'),
-                    Text('minTemp: ${weatherModel.minTemp.round()}'),
+                    Text(
+                      'H: ${weatherModel.maxTemp.round()}°',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'L: ${weatherModel.minTemp.round()}°',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ],

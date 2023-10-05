@@ -42,11 +42,11 @@ MaterialColor getThemeColor(String? weather) {
   }
   switch (weather) {
     case "Sunny":
-      return Colors.orange;
+      return Colors.deepOrange;
     case "Clear":
       return Colors.lightBlue;
     case "Partly cloudy":
-      return Colors.lightGreen;
+      return Colors.purple;
     case "Cloudy":
       return Colors.grey;
     case "Overcast":
@@ -66,6 +66,7 @@ MaterialColor getThemeColor(String? weather) {
     case "Freezing drizzle":
     case "Heavy freezing drizzle":
     case "Patchy light rain":
+      return Colors.teal;
     case "Light rain":
     case "Moderate rain at times":
     case "Moderate rain":
@@ -95,7 +96,7 @@ MaterialColor getThemeColor(String? weather) {
     case "Moderate or heavy rain with thunder":
     case "Patchy light snow with thunder":
     case "Moderate or heavy snow with thunder":
-      return Colors.grey;
+      return Colors.cyan;
     default:
       return Colors.blue;
   }
