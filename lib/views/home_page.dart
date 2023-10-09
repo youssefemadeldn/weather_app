@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
+import 'package:weather_app/main.dart';
 import 'package:weather_app/views/s/search_view.dart';
 import 'package:weather_app/widget/no_weather_body.dart';
 import 'package:weather_app/widget/weather_info_body.dart';
@@ -42,8 +43,38 @@ class MyHomePage extends StatelessWidget {
               weather: state.weatherModel,
             );
           } else {
-            return const Text(
-                'Ooops there an was error , pleas try again later');
+            return Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: getThemeColor(BlocProvider.of<GetWeatherCubit>(context)
+                      .weatherModel!
+                      .weatherCondition),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                // alignment: Alignment.center,
+                height: 200,
+                width: 250,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Ooops there an was error , pleas',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      ' try again later',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
         },
       ),
