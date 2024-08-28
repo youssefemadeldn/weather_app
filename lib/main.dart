@@ -1,7 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
+import 'package:weather_app/cubits/weather_cubit/weather_cubit.dart';
+import 'package:weather_app/services/weather_service.dart';
 
 import 'package:weather_app/views/home_page.dart';
 
@@ -16,21 +17,17 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetWeatherCubit(),
-      child: Builder(
-        builder: (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
-          builder: (context, state) => MaterialApp(
-            theme: ThemeData(
-              primarySwatch: getThemeColor(
-                BlocProvider.of<GetWeatherCubit>(context)
-                    .weatherModel
-                    ?.weatherCondition,
-              ),
-            ),
-            debugShowCheckedModeBanner: false,
-            home: const MyHomePage(),
-          ),
-        ),
+      create: (context) => WeatherCubit(WeatherService(Dio())),
+      child: const MaterialApp(
+        // theme: ThemeData(
+        //   primarySwatch: getThemeColor(
+        //     BlocProvider.of<GetWeatherCubit>(context)
+        //         .weatherModel
+        //         ?.weatherCondition,
+        //   ),
+        // ),
+        debugShowCheckedModeBanner: false,
+        home: MyHomePage(),
       ),
     );
   }

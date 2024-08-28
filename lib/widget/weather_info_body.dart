@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app/cubits/weather_cubit/weather_cubit.dart';
 import 'package:weather_app/main.dart';
 import 'package:weather_app/models/weather_model.dart';
 
@@ -14,7 +14,7 @@ class WeatherInfoBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WeatherModel weatherModel =
-        BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
+        BlocProvider.of<WeatherCubit>(context).weatherModel!;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -33,7 +33,7 @@ class WeatherInfoBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              weatherModel.cityName,
+              BlocProvider.of<WeatherCubit>(context).cityName!,
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
